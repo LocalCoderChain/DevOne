@@ -397,6 +397,14 @@ with tab_chat:
                         "This is an occasional model reliability quirk, not a bug in the app.\n\n"
                         "Try rephrasing with a shorter, more specific search term, or just ask again."
                     )
+                elif "recursion limit" in str(e).lower():
+                    response = (
+                        "**I wasn't able to find a complete answer within the number of "
+                        "reasoning/tool-call steps allowed.** The agent searched but ran out of "
+                        "attempts before reaching a final answer.\n\n"
+                        "Try narrowing your question, or asking about a more specific part of "
+                        "the codebase."
+                    )
                 else:
                     response = (
                         f"**Error:** `{e}`\n\n"
