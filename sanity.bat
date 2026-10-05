@@ -25,6 +25,16 @@ if errorlevel 1 (
     echo  [OK]    Python found.
 )
 
+:: ── Check 1b: Git (repo_manager.py shells out to git) ──────────────────────
+git --version >nul 2>&1
+if errorlevel 1 (
+    echo  [FAIL]  Git not found. DevOne clones and syncs repos via git.
+    echo          Install from: https://git-scm.com/download/win
+    set FAIL=1
+) else (
+    echo  [OK]    Git found.
+)
+
 :: ── Check 2: Virtual environment ───────────────────────────────────────────
 if not exist "myvenv\Scripts\activate.bat" (
     echo  [WARN]  Virtual environment not found yet.
